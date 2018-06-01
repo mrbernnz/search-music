@@ -1,7 +1,21 @@
 import React, { Component } from 'react';
+import { withStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
 import axios from 'axios';
 
-export default class SearchBar extends Component {
+const styles = theme => ({
+  container: {
+    display: 'flex',
+    flexWrap: 'wrap'
+  },
+  textField: {
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
+    width: '100%'
+  }
+});
+
+class SearchBar extends Component {
   state = {
     term: ''
   };
@@ -30,10 +44,22 @@ export default class SearchBar extends Component {
 
   render() {
     const { term } = this.state;
+    const { classes } = this.props;
     return (
-      <form onSubmit={this.submitHandler}>
-        <input type="search" value={term} onChange={this.changeHandler} />
+      <form className={classes.container} onSubmit={this.submitHandler}>
+        <TextField
+          id="search"
+          label="Search Albums"
+          type="search"
+          name="term"
+          className={classes.textField}
+          margin="normal"
+          value={term}
+          onChange={this.changeHandler}
+        />
       </form>
     );
   }
 }
+
+export default withStyles(styles)(SearchBar);

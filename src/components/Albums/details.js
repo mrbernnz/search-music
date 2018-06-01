@@ -1,12 +1,21 @@
 import React from 'react';
+import GridListTile from '@material-ui/core/GridListTile';
+import GridListTileBar from '@material-ui/core/GridListTileBar';
 
-export default ({ cover, name, artist, year }) => {
+const Details = ({ cover, name, artist, year }) => {
   return (
-    <div>
-      <img src={cover} alt="Album Cover" />
-      <h3>{name}</h3>
-      <h3>{artist}</h3>
-      <h3>{year}</h3>
-    </div>
+    <GridListTile key={cover} style={{ margin: '8px' }}>
+      <img src={cover} alt={name} style={{ width: '200px' }} />
+      <GridListTileBar
+        title={name}
+        subtitle={
+          <span>
+            by: {artist} in {year}
+          </span>
+        }
+      />
+    </GridListTile>
   );
 };
+
+export default Details;
