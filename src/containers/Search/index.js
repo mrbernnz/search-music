@@ -6,8 +6,8 @@ export default class SearchBar extends Component {
     term: ''
   };
 
-  changeHandler = ({ target: { value } }) => {
-    this.setState({ term: value });
+  changeHandler = ({ target: { name, value } }) => {
+    this.setState({ [name]: value });
   };
 
   fetchAlbums = async term => {
