@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import SearchBar from './container/Search';
+import SearchBar from './containers/Search';
 import Albums from './components/Albums';
 import './App.css';
 
